@@ -3,7 +3,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { SessionProvider } from "next-auth/react";
 
 const inter = Poppins({
@@ -14,7 +14,7 @@ const disableNavbar = ["/login", "/register"];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const pathName = router.pathname;
+  const pathName = usePathname();
   return (
     <html lang="en">
       <body className={inter.className}>
